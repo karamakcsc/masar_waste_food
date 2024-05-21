@@ -1,0 +1,52 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-15 14:36:15.609143",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "start_point",
+  "street_name",
+  "check_point",
+  "distance"
+ ],
+ "fields": [
+  {
+   "fieldname": "start_point",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Start Point"
+  },
+  {
+   "fieldname": "street_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Street Name"
+  },
+  {
+   "fieldname": "check_point",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Check Point"
+  },
+  {
+   "fieldname": "distance",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Distance"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-05-19 13:04:28.706186",
+ "modified_by": "Administrator",
+ "module": "Masar Waste Food",
+ "name": "Child Round Trip Route",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

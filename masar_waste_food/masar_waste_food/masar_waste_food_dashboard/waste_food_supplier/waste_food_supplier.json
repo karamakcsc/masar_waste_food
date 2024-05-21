@@ -1,0 +1,49 @@
+{
+ "cards": [
+  {
+   "card": "Waste Generator"
+  },
+  {
+   "card": "Approved"
+  },
+  {
+   "card": "Not Classified"
+  },
+  {
+   "card": "Waste Qty"
+  },
+  {
+   "card": "Avg. Cost PT"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "No. of Suppliers in Each State",
+   "width": "Full"
+  },
+  {
+   "chart": "Quantity in Each City",
+   "width": "Full"
+  },
+  {
+   "chart": "Round Trip Cost in Each City",
+   "width": "Full"
+  },
+  {
+   "chart": "Top Supplier",
+   "width": "Full"
+  }
+ ],
+ "creation": "2024-05-19 11:13:00.251933",
+ "dashboard_name": "Waste Food Supplier",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2024-05-20 16:00:52.202226",
+ "modified_by": "Administrator",
+ "module": "Masar Waste Food",
+ "name": "Waste Food Supplier",
+ "owner": "Administrator"
+}

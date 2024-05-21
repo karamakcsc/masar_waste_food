@@ -1,0 +1,410 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "format:{supplier_name}-{####}",
+ "creation": "2024-05-14 10:23:33.209519",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "supplier_info_section",
+  "supplier_name",
+  "contact_number",
+  "contact_no_confirmed",
+  "column_break_tpov",
+  "contacted_person",
+  "email_id",
+  "address",
+  "address_confirmed",
+  "column_break_swvo",
+  "supplier_group",
+  "supplier_type",
+  "section_break_yekf",
+  "type_of_generated_waste",
+  "column_break_shvp",
+  "expected_quantity",
+  "section_break_lzuo",
+  "map",
+  "insert_location",
+  "column_break_rpvy",
+  "distance",
+  "round_trip_cost",
+  "tons_per_cubic_meters",
+  "cubic_meters_per_week",
+  "round_trip_conclusion",
+  "section_break_vjgx",
+  "round_trip_route",
+  "section_break_duzx",
+  "list_of_plants",
+  "type_of_food_waste_at_each_plant",
+  "suitable_container_size",
+  "other_container_size",
+  "no_of_totes",
+  "number_of_round_trips",
+  "estimated_quantity_per_week",
+  "price_per_ton",
+  "column_break_xskv",
+  "appropriate_collection_frequency",
+  "best_totes_location_selected",
+  "proper_time_to_collect_totes",
+  "restricted_time_to_collect_totes",
+  "sample_collected",
+  "current_disposal_process",
+  "site_visit_conclusion",
+  "section_break_akvw",
+  "solid_percentage",
+  "moisture_percentage",
+  "column_break_agdh",
+  "moisture_test_conclusion",
+  "section_break_bsvg",
+  "fat_percentage",
+  "protein_percentage",
+  "fiber_percentage",
+  "data_fact_source",
+  "data_fact_sheet",
+  "column_break_coua",
+  "nutrients_content_conclusion",
+  "section_break_dnak",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name"
+  },
+  {
+   "fieldname": "supplier_type",
+   "fieldtype": "Select",
+   "label": "Supplier Type",
+   "options": "Company\nIndividual\nProprietorship\nPartnership"
+  },
+  {
+   "fieldname": "column_break_tpov",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier_group",
+   "fieldtype": "Link",
+   "label": "Supplier Group",
+   "options": "Supplier Group"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_bsvg",
+   "fieldtype": "Section Break",
+   "label": "Lab Test 2"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Contact Number"
+  },
+  {
+   "fieldname": "distance",
+   "fieldtype": "Data",
+   "label": "Distance"
+  },
+  {
+   "fieldname": "data_fact_source",
+   "fieldtype": "Data",
+   "label": "Data Fact source"
+  },
+  {
+   "fieldname": "column_break_coua",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "expected_quantity",
+   "fieldtype": "Float",
+   "label": "Expected Quantity Per Week"
+  },
+  {
+   "fieldname": "data_fact_sheet",
+   "fieldtype": "Attach",
+   "label": "Data Fact Sheet"
+  },
+  {
+   "fieldname": "section_break_dnak",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Supplier Qualification",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "section_break_yekf",
+   "fieldtype": "Section Break",
+   "label": "Info"
+  },
+  {
+   "default": "0",
+   "fieldname": "address_confirmed",
+   "fieldtype": "Check",
+   "label": "Address Confirmed"
+  },
+  {
+   "default": "0",
+   "fieldname": "contact_no_confirmed",
+   "fieldtype": "Check",
+   "label": "Contact No. Confirmed"
+  },
+  {
+   "fieldname": "column_break_shvp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "type_of_generated_waste",
+   "fieldtype": "Select",
+   "label": "Type of Generated Waste",
+   "options": "Residual\nByproducts\nWastes\nUnused Products"
+  },
+  {
+   "fieldname": "section_break_lzuo",
+   "fieldtype": "Section Break",
+   "label": "Round Trip"
+  },
+  {
+   "fieldname": "column_break_rpvy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_duzx",
+   "fieldtype": "Section Break",
+   "label": "Site Visit"
+  },
+  {
+   "fieldname": "list_of_plants",
+   "fieldtype": "Small Text",
+   "label": "List of Plants"
+  },
+  {
+   "fieldname": "type_of_food_waste_at_each_plant",
+   "fieldtype": "Small Text",
+   "label": "Type of Food Waste at Each Plant"
+  },
+  {
+   "fieldname": "suitable_container_size",
+   "fieldtype": "Select",
+   "label": "Suitable Container Size (m3)",
+   "options": "0.25\n0.50\n1.00\nother"
+  },
+  {
+   "fieldname": "estimated_quantity_per_week",
+   "fieldtype": "Float",
+   "label": "Estimated Quantity Per Week"
+  },
+  {
+   "fieldname": "current_disposal_process",
+   "fieldtype": "Small Text",
+   "label": "Current Disposal Process"
+  },
+  {
+   "fieldname": "column_break_xskv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "appropriate_collection_frequency",
+   "fieldtype": "Select",
+   "label": "Appropriate Collection Frequency",
+   "options": "1 per Day\n1 per 2 Days\n1 per 3 Days\n1 per 7 Days"
+  },
+  {
+   "fieldname": "proper_time_to_collect_totes",
+   "fieldtype": "Small Text",
+   "label": "Proper Time to Collect Totes"
+  },
+  {
+   "fieldname": "restricted_time_to_collect_totes",
+   "fieldtype": "Small Text",
+   "label": "Restricted Time to Collect Totes"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_akvw",
+   "fieldtype": "Section Break",
+   "label": "Lab Test 1"
+  },
+  {
+   "fieldname": "solid_percentage",
+   "fieldtype": "Data",
+   "label": "Solid Percentage"
+  },
+  {
+   "fieldname": "column_break_agdh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "moisture_percentage",
+   "fieldtype": "Data",
+   "label": "Moisture Percentage"
+  },
+  {
+   "fieldname": "fat_percentage",
+   "fieldtype": "Data",
+   "label": "Fat Percentage"
+  },
+  {
+   "fieldname": "protein_percentage",
+   "fieldtype": "Data",
+   "label": "Protein Percentage"
+  },
+  {
+   "fieldname": "fiber_percentage",
+   "fieldtype": "Data",
+   "label": "Fiber Percentage"
+  },
+  {
+   "fieldname": "contacted_person",
+   "fieldtype": "Data",
+   "label": "Contacted Person"
+  },
+  {
+   "fieldname": "column_break_swvo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "round_trip_route",
+   "fieldtype": "Table",
+   "label": "Round Trip Route",
+   "options": "Child Round Trip Route"
+  },
+  {
+   "fieldname": "round_trip_cost",
+   "fieldtype": "Data",
+   "label": "Round Trip Cost"
+  },
+  {
+   "fieldname": "other_container_size",
+   "fieldtype": "Data",
+   "label": "Other Container Size"
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_collected",
+   "fieldtype": "Check",
+   "label": "Sample Collected"
+  },
+  {
+   "default": "0",
+   "fieldname": "best_totes_location_selected",
+   "fieldtype": "Check",
+   "label": "Best Totes Location Selected"
+  },
+  {
+   "fieldname": "moisture_test_conclusion",
+   "fieldtype": "Small Text",
+   "label": "Moisture Test Conclusion"
+  },
+  {
+   "fieldname": "round_trip_conclusion",
+   "fieldtype": "Small Text",
+   "label": "Round Trip Conclusion"
+  },
+  {
+   "fieldname": "site_visit_conclusion",
+   "fieldtype": "Small Text",
+   "label": "Site Visit Conclusion"
+  },
+  {
+   "fieldname": "nutrients_content_conclusion",
+   "fieldtype": "Small Text",
+   "label": "Nutrients Content Conclusion"
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email ID"
+  },
+  {
+   "fieldname": "supplier_info_section",
+   "fieldtype": "Section Break",
+   "label": "Supplier Info"
+  },
+  {
+   "fieldname": "number_of_round_trips",
+   "fieldtype": "Float",
+   "label": "Number of Round Trips",
+   "read_only": 1
+  },
+  {
+   "fieldname": "price_per_ton",
+   "fieldtype": "Float",
+   "label": "Price Per Ton",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_vjgx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "map",
+   "fieldtype": "Geolocation",
+   "label": "Map"
+  },
+  {
+   "fieldname": "no_of_totes",
+   "fieldtype": "Data",
+   "label": "No. of Totes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cubic_meters_per_week",
+   "fieldtype": "Data",
+   "label": "Cubic Meters Per Week",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tons_per_cubic_meters",
+   "fieldtype": "Data",
+   "label": "Tons Per Cubic Meters"
+  },
+  {
+   "fieldname": "insert_location",
+   "fieldtype": "Button",
+   "label": "Insert Location to Child Table"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-05-21 12:50:42.244296",
+ "modified_by": "Administrator",
+ "module": "Masar Waste Food",
+ "name": "Supplier Qualification",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
