@@ -39,6 +39,7 @@ class SupplierQualification(Document):
 			if tons_per > 0:
 				sum = float(total / tons_per)
 				self.cubic_meters_per_week = sum
+				frappe.db.commit()
 
 		elif self.workflow_state != 'Route Feasible':
 			pass
@@ -58,7 +59,9 @@ class SupplierQualification(Document):
 			if tote_size > 0:
 				sum = float(cubic_meters / tote_size)
 				self.no_of_totes = sum
+				frappe.db.commit()
 				self.number_of_round_trips = sum
+				frappe.db.commit()
 
 		elif self.workflow_state != 'Site Surveyed':
 			pass
@@ -78,6 +81,7 @@ class SupplierQualification(Document):
 			if total > 0:
 				sum = float((num_of_rt * price_of_rt) / total)
 				self.price_per_ton = sum
+				frappe.db.commit()
 
 		elif self.workflow_state != 'Site Surveyed':
 			pass
