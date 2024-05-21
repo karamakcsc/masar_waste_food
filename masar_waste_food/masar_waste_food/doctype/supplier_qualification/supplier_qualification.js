@@ -9,3 +9,4 @@ frappe.ui.form.on("Supplier Qualification", {
         frm.refresh_field('price_per_ton');
     }
 });
+///
