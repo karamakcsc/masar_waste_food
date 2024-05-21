@@ -337,12 +337,14 @@
    "label": "Supplier Info"
   },
   {
+   "default": "0",
    "fieldname": "number_of_round_trips",
    "fieldtype": "Float",
    "label": "Number of Round Trips",
    "read_only": 1
   },
   {
+   "default": "0",
    "fieldname": "price_per_ton",
    "fieldtype": "Float",
    "label": "Price Per Ton",
@@ -358,12 +360,14 @@
    "label": "Map"
   },
   {
+   "default": "0",
    "fieldname": "no_of_totes",
    "fieldtype": "Data",
    "label": "No. of Totes",
    "read_only": 1
   },
   {
+   "default": "0",
    "fieldname": "cubic_meters_per_week",
    "fieldtype": "Data",
    "label": "Cubic Meters Per Week",
@@ -383,7 +387,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-21 12:50:42.244296",
+ "modified": "2024-05-21 13:50:00.175957",
  "modified_by": "Administrator",
  "module": "Masar Waste Food",
  "name": "Supplier Qualification",

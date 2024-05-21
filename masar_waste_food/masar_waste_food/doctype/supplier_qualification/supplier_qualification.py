@@ -44,7 +44,7 @@ class SupplierQualification(Document):
 			pass
 
 		else:
-			frappe.throw('Error CM')
+			frappe.throw('Error: Cannot Sum Cubic Meters Per Week ')
 
 
 	def num_of_tote_sum(self):
@@ -63,7 +63,7 @@ class SupplierQualification(Document):
 		elif self.workflow_state != 'Site Surveyed':
 			pass
 		else:
-			frappe.throw('Error NT')
+			frappe.throw('Error: Cannot Sum Number of Totes')
 
 	def price_per_ton_sum(self):
 		sum = 0
@@ -82,7 +82,7 @@ class SupplierQualification(Document):
 		elif self.workflow_state != 'Site Surveyed':
 			pass
 		else:
-			frappe.throw('Error PPT')				
+			frappe.throw('Error: Cannot Sum Price Per Ton')				
 
 		
 		
