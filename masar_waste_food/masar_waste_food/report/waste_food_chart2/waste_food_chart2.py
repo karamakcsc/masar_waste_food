@@ -11,8 +11,18 @@ def data(filters):
 	if filters.get('supplier_name'):
 		conditions += f" AND supplier_name = '{filters.get('supplier_name')}'"
 
+	if filters.get('estimated_quantity_per_week'):
+		conditions += f" AND estimated_quantity_per_week = '{filters.get('estimated_quantity_per_week')}'"
+
+	if filters.get('moisture_percentage'):
+		conditions += f" AND moisture_percentage = '{filters.get('moisture_percentage')}'"
+
+	if filters.get('price_per_ton'):
+		conditions += f" AND price_per_ton = '{filters.get('price_per_ton')}'"			
+
 	return frappe.db.sql(f"""
-SELECT supplier_name, contact_number, contact_no_confirmed, email_id, expected_quantity, workflow_state
+SELECT supplier_name, contact_number, contact_no_confirmed, email_id, estimated_quantity_per_week,
+		moisture_percentage, price_per_ton, workflow_state
 FROM `tabSupplier Qualification`
 WHERE 1=1 {conditions}					  
 """)
@@ -23,7 +33,9 @@ def columns():
 		"Contact Number:Data:200",
 		"Contact No. Confirmed:Check:200",
 		"Email ID:Data:200",
-		"Expected Quantity:Data:200",
+		"Quantity Per Week:Data:200",
+		"Moisture Percentage:Data:200",
+		"Price Per Ton:Data:200",
     ]
 
 def chart():

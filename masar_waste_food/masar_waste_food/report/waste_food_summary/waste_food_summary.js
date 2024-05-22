@@ -4,6 +4,19 @@
 frappe.query_reports["Waste Food Summary"] = {
 	"filters": [
 
+	
+		{
+			"fieldname": "supplier_name",
+			"label": __("Supplier Name"),
+			"fieldtype": "Data",
+		},
+
+		{
+			"fieldname": "city",
+			"label": __("City"),
+			"fieldtype": "Data",
+		},
+		
 		{
 			"fieldname": "workflow_state",
 			"label": __("Workflow State"),
@@ -11,11 +24,6 @@ frappe.query_reports["Waste Food Summary"] = {
 			"options": " \nDraft\nAddress Confirmed\nRoute Feasible\nSite Surveyed\nPass Test 1\nPass Test 2\nApproved",
 		},
 		
-		{
-			"fieldname": "supplier_name",
-			"label": __("Supplier Name"),
-			"fieldtype": "Data",
-		},
 
 	]
 };

@@ -7,41 +7,45 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "supplier_info_tab",
   "supplier_info_section",
   "supplier_name",
   "contact_number",
   "contact_no_confirmed",
+  "address_map",
   "column_break_tpov",
   "contacted_person",
   "email_id",
-  "address",
+  "country",
   "address_confirmed",
   "column_break_swvo",
   "supplier_group",
   "supplier_type",
+  "city",
+  "refrence",
   "section_break_yekf",
   "type_of_generated_waste",
   "column_break_shvp",
   "expected_quantity",
+  "round_trip_tab",
   "section_break_lzuo",
   "map",
   "insert_location",
   "column_break_rpvy",
   "distance",
   "round_trip_cost",
-  "tons_per_cubic_meters",
-  "cubic_meters_per_week",
   "round_trip_conclusion",
   "section_break_vjgx",
   "round_trip_route",
+  "site_visit_tab",
   "section_break_duzx",
   "list_of_plants",
   "type_of_food_waste_at_each_plant",
   "suitable_container_size",
-  "other_container_size",
   "no_of_totes",
   "number_of_round_trips",
   "estimated_quantity_per_week",
+  "cubic_meters_per_week",
   "price_per_ton",
   "column_break_xskv",
   "appropriate_collection_frequency",
@@ -51,11 +55,13 @@
   "sample_collected",
   "current_disposal_process",
   "site_visit_conclusion",
+  "lab_test_1_tab",
   "section_break_akvw",
   "solid_percentage",
   "moisture_percentage",
   "column_break_agdh",
   "moisture_test_conclusion",
+  "tab_break_vnnc",
   "section_break_bsvg",
   "fat_percentage",
   "protein_percentage",
@@ -71,7 +77,8 @@
   {
    "fieldname": "supplier_name",
    "fieldtype": "Data",
-   "label": "Supplier Name"
+   "label": "Supplier Name",
+   "reqd": 1
   },
   {
    "fieldname": "supplier_type",
@@ -90,7 +97,6 @@
    "options": "Supplier Group"
   },
   {
-   "collapsible": 1,
    "fieldname": "section_break_bsvg",
    "fieldtype": "Section Break",
    "label": "Lab Test 2"
@@ -99,12 +105,14 @@
    "fieldname": "contact_number",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Contact Number"
+   "label": "Contact Number",
+   "reqd": 1
   },
   {
    "fieldname": "distance",
    "fieldtype": "Data",
-   "label": "Distance"
+   "label": "Distance",
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Address Confirmed'"
   },
   {
    "fieldname": "data_fact_source",
@@ -116,16 +124,10 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "address",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Address",
-   "options": "Address"
-  },
-  {
    "fieldname": "expected_quantity",
    "fieldtype": "Float",
-   "label": "Expected Quantity Per Week"
+   "label": "Expected Quantity Per Week",
+   "reqd": 1
   },
   {
    "fieldname": "data_fact_sheet",
@@ -183,7 +185,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "collapsible": 1,
    "fieldname": "section_break_duzx",
    "fieldtype": "Section Break",
    "label": "Site Visit"
@@ -202,12 +203,13 @@
    "fieldname": "suitable_container_size",
    "fieldtype": "Select",
    "label": "Suitable Container Size (m3)",
-   "options": "0.25\n0.50\n1.00\nother"
+   "options": "0.25\n0.30\n0.50\n0.75\n1.00"
   },
   {
+   "depends_on": "eval:doc.workflow_state == 'Route Feasible'",
    "fieldname": "estimated_quantity_per_week",
    "fieldtype": "Float",
-   "label": "Estimated Quantity Per Week"
+   "label": "Quantity Per Week After Visit"
   },
   {
    "fieldname": "current_disposal_process",
@@ -235,7 +237,6 @@
    "label": "Restricted Time to Collect Totes"
   },
   {
-   "collapsible": 1,
    "fieldname": "section_break_akvw",
    "fieldtype": "Section Break",
    "label": "Lab Test 1"
@@ -290,11 +291,6 @@
    "label": "Round Trip Cost"
   },
   {
-   "fieldname": "other_container_size",
-   "fieldtype": "Data",
-   "label": "Other Container Size"
-  },
-  {
    "default": "0",
    "fieldname": "sample_collected",
    "fieldtype": "Check",
@@ -329,7 +325,8 @@
   {
    "fieldname": "email_id",
    "fieldtype": "Data",
-   "label": "Email ID"
+   "label": "Email ID",
+   "reqd": 1
   },
   {
    "fieldname": "supplier_info_section",
@@ -374,20 +371,68 @@
    "read_only": 1
   },
   {
-   "fieldname": "tons_per_cubic_meters",
-   "fieldtype": "Data",
-   "label": "Tons Per Cubic Meters"
-  },
-  {
    "fieldname": "insert_location",
    "fieldtype": "Button",
    "label": "Insert Location to Child Table"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Link",
+   "label": "City",
+   "options": "City"
+  },
+  {
+   "fieldname": "address_map",
+   "fieldtype": "Data",
+   "label": "Address Map"
+  },
+  {
+   "fieldname": "refrence",
+   "fieldtype": "Link",
+   "label": "Refrence",
+   "options": "Supplier",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tab_break_vnnc",
+   "fieldtype": "Tab Break",
+   "label": "Lab Test 2"
+  },
+  {
+   "fieldname": "supplier_info_tab",
+   "fieldtype": "Tab Break",
+   "label": "Supplier Info"
+  },
+  {
+   "depends_on": "eval:(doc.workflow_state == 'Address Confirmed' || doc.workflow_state == 'Route Feasible' || doc.workflow_state == 'Site Surveyed' || doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2')",
+   "fieldname": "round_trip_tab",
+   "fieldtype": "Tab Break",
+   "label": "Round Trip"
+  },
+  {
+   "depends_on": "eval:(doc.workflow_state == 'Route Feasible' || doc.workflow_state == 'Site Surveyed' || doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2')",
+   "fieldname": "site_visit_tab",
+   "fieldtype": "Tab Break",
+   "label": "Site Visit"
+  },
+  {
+   "depends_on": "eval:(doc.workflow_state == 'Site Surveyed' || doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2')",
+   "fieldname": "lab_test_1_tab",
+   "fieldtype": "Tab Break",
+   "label": "Lab Test 1"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-21 13:50:00.175957",
+ "modified": "2024-05-22 12:12:31.737910",
  "modified_by": "Administrator",
  "module": "Masar Waste Food",
  "name": "Supplier Qualification",

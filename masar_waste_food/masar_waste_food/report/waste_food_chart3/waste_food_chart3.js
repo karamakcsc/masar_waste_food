@@ -5,17 +5,31 @@ frappe.query_reports["Waste Food Chart3"] = {
 	"filters": [
 
 		{
+			"fieldname": "supplier_name",
+			"label": __("Supplier Name"),
+			"fieldtype": "Data",
+		},
+
+		{
+			"fieldname": "city",
+			"label": __("City"),
+			"fieldtype": "Link",
+			"options": "City",
+		},
+
+		{
+			"fieldname": "round_trip_cost",
+			"label": __("Round Trip Cost"),
+			"fieldtype": "Data",
+		},
+
+		{
 			"fieldname": "workflow_state",
 			"label": __("Workflow State"),
 			"fieldtype": "Select",
 			"options": " \nDraft\nAddress Confirmed\nRoute Feasible\nSite Surveyed\nPass Test 1\nPass Test 2\nApproved",
 		},
 		
-		{
-			"fieldname": "supplier_name",
-			"label": __("Supplier Name"),
-			"fieldtype": "Data",
-		},
 
 	]
 };

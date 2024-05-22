@@ -1,33 +1,39 @@
 import frappe
 
 def execute(filters=None):
-	return columns(), data(filters), None, chart()
+    return columns(), data(filters), None, chart()
 
 def data(filters):
-	conditions = ""
-	if filters.get('workflow_state'):
-		conditions += f" AND workflow_state = '{filters.get('workflow_state')}'"
+    conditions = ""
 
-	if filters.get('supplier_name'):
-		conditions += f" AND supplier_name = '{filters.get('supplier_name')}'"
+    if filters.get('city'):
+        conditions += f" AND city = '{filters.get('city')}'"
 
-	return frappe.db.sql(f"""
-SELECT supplier_name, contact_number, contact_no_confirmed, email_id, expected_quantity, workflow_state
-FROM `tabSupplier Qualification`
-WHERE 1=1 {conditions}					  
-""")
+    if filters.get('workflow_state'):
+        conditions += f" AND workflow_state = '{filters.get('workflow_state')}'"
+
+    if filters.get('supplier_name'):
+        conditions += f" AND supplier_name = '{filters.get('supplier_name')}'"
+
+    return frappe.db.sql(f"""
+        SELECT supplier_name, contact_number, contact_no_confirmed, email_id, country, city, workflow_state
+        FROM `tabSupplier Qualification`
+        WHERE 1=1 {conditions}
+    """)
 
 def columns():
-	return [
-		"Supplier Name:Data:200",
-		"Contact Number:Data:200",
-		"Contact No. Confirmed:Check:200",
-		"Email ID:Data:200",
-		"Expected Quantity:Data:200",
+    return [
+        "Supplier Name:Data:200",
+        "Contact Number:Data:200",
+        "Contact No. Confirmed:Check:150",
+        "Email ID:Data:200",
+        "Country:Data:100",
+        "City:Data:150",
+        "Workflow State:Link/Workflow State:200",
     ]
 
 def chart():
-    state_data = frappe.db.sql(""" 
+    state_data = frappe.db.sql("""
         SELECT workflow_state, COUNT(supplier_name) AS suppliers
         FROM `tabSupplier Qualification`
         GROUP BY workflow_state
@@ -43,10 +49,9 @@ def chart():
             ELSE 7
         END;
     """, as_dict=True)
-    
+
     state_chart_labels = []
     state_chart_datasets = []
- 
 
     for row in state_data:
         state_chart_labels.append(row.workflow_state)
@@ -63,6 +68,4 @@ def chart():
         'type': 'bar'
     }
 
-
-    
     return state_chart

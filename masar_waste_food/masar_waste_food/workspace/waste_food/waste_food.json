@@ -1,22 +1,100 @@
 {
- "charts": [],
- "content": "[{\"id\":\"FvCRHy-Vpy\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Waste Food</span>\",\"col\":12}},{\"id\":\"qt-gPRjMBf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Supplier Qualification\",\"col\":3}},{\"id\":\"ietaFZ1fi-\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Waste Food Supplier\",\"col\":3}}]",
+ "charts": [
+  {
+   "chart_name": "No. of Suppliers in Each State",
+   "label": "No. of Suppliers in Each State"
+  },
+  {
+   "chart_name": "Quantity in Each City",
+   "label": "Quantity in Each City"
+  },
+  {
+   "chart_name": "Round Trip Cost in Each City",
+   "label": "Round Trip Cost in Each City"
+  },
+  {
+   "chart_name": "Top Supplier",
+   "label": "Top Supplier"
+  }
+ ],
+ "content": "[{\"id\":\"FvCRHy-Vpy\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Waste Food</span>\",\"col\":12}},{\"id\":\"Ie8zRClm9x\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Waste Generator\",\"col\":4}},{\"id\":\"x0069kn8_i\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Approved\",\"col\":4}},{\"id\":\"UNhdp-wj-j\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Not Classified\",\"col\":4}},{\"id\":\"hv5JmPNzEM\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Waste Qty\",\"col\":4}},{\"id\":\"etEx8qRbco\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Avg. Cost PT\",\"col\":4}},{\"id\":\"0FxI5HkTZ7\",\"type\":\"chart\",\"data\":{\"chart_name\":\"No. of Suppliers in Each State\",\"col\":12}},{\"id\":\"7lCoHkXw26\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Quantity in Each City\",\"col\":12}},{\"id\":\"buRFseHqPO\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Round Trip Cost in Each City\",\"col\":12}},{\"id\":\"PCwiGknsgY\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Top Supplier\",\"col\":12}},{\"id\":\"AjfpCI9tQO\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"be9jbr6Vw6\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"qt-gPRjMBf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Supplier Qualification\",\"col\":3}},{\"id\":\"1D4Gk3lyN4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"City\",\"col\":3}},{\"id\":\"pPEgfIOODZ\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"tJ9id3cNON\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Master Data &amp; Reports</b></span>\",\"col\":12}},{\"id\":\"UF1IlXNgtQ\",\"type\":\"card\",\"data\":{\"card_name\":\"Master Data\",\"col\":4}},{\"id\":\"tcqJJQs0oa\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
  "creation": "2024-05-20 15:33:58.334356",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
  "for_user": "",
  "hide_custom": 0,
+ "icon": "solid-success",
  "idx": 0,
- "indicator_color": "blue",
+ "indicator_color": "",
  "is_hidden": 0,
  "label": "Waste Food",
- "links": [],
- "modified": "2024-05-20 15:36:24.823966",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Master Data",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "City",
+   "link_count": 0,
+   "link_to": "City",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Waste Food Summary",
+   "link_count": 0,
+   "link_to": "Waste Food Summary",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-05-22 10:57:48.897064",
  "modified_by": "Administrator",
  "module": "Masar Waste Food",
  "name": "Waste Food",
- "number_cards": [],
+ "number_cards": [
+  {
+   "label": "Waste Generator",
+   "number_card_name": "Waste Generator"
+  },
+  {
+   "label": "Approved",
+   "number_card_name": "Approved"
+  },
+  {
+   "label": "Not Classified",
+   "number_card_name": "Not Classified"
+  },
+  {
+   "label": "Waste Qty",
+   "number_card_name": "Waste Qty"
+  },
+  {
+   "label": "Avg. Cost PT",
+   "number_card_name": "Avg. Cost PT"
+  }
+ ],
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
@@ -35,9 +113,10 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Waste Food Supplier",
-   "link_to": "Waste Food Supplier",
-   "type": "Dashboard"
+   "label": "City",
+   "link_to": "City",
+   "stats_filter": "[]",
+   "type": "DocType"
   }
  ],
  "title": "Waste Food"

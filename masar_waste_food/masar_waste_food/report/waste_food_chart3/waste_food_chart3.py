@@ -11,8 +11,14 @@ def data(filters):
 	if filters.get('supplier_name'):
 		conditions += f" AND supplier_name = '{filters.get('supplier_name')}'"
 
+	if filters.get('round_trip_cost'):
+		conditions += f" AND round_trip_cost = '{filters.get('round_trip_cost')}'"
+
+	if filters.get('city'):
+		conditions += f" AND city = '{filters.get('city')}'"		
+
 	return frappe.db.sql(f"""
-SELECT supplier_name, contact_number, contact_no_confirmed, email_id, expected_quantity, workflow_state
+SELECT supplier_name, contact_number, contact_no_confirmed, email_id, country, city, round_trip_cost, workflow_state
 FROM `tabSupplier Qualification`
 WHERE 1=1 {conditions}					  
 """)
@@ -23,12 +29,15 @@ def columns():
 		"Contact Number:Data:200",
 		"Contact No. Confirmed:Check:200",
 		"Email ID:Data:200",
-		"Expected Quantity:Data:200",
+		"Country:Link/Country:200",
+		"City:Link/City:200",
+		"Round Trip Cost:Data:200",
+		"Workflow State:Link/Workflow State:200",
     ]
 
 def chart():
 	data = frappe.db.sql("""
-					  SELECT address , round_trip_cost
+					  SELECT country, city, round_trip_cost
 					  FROM `tabSupplier Qualification`
 					  """, as_dict = True)
 	
@@ -36,7 +45,7 @@ def chart():
 	cost = []
 
 	for row in data:
-		address.append(row.address)
+		address.append(str(row.country) + '-' + str(row.city))
 		cost.append(row.round_trip_cost)
 
 	chart = {
