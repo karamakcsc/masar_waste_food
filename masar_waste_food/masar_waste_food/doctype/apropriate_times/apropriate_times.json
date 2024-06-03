@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:time_range",
+ "creation": "2024-06-03 12:06:19.746459",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "time_section",
+  "time_range",
+  "column_break_euwx",
+  "is_enabled"
+ ],
+ "fields": [
+  {
+   "fieldname": "time_range",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Time Range",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "time_section",
+   "fieldtype": "Section Break",
+   "label": "Time"
+  },
+  {
+   "fieldname": "column_break_euwx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-06-03 14:22:34.996954",
+ "modified_by": "Administrator",
+ "module": "Masar Waste Food",
+ "name": "Apropriate Times",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

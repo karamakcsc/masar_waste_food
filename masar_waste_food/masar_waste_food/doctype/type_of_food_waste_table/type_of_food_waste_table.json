@@ -1,0 +1,30 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-06-03 12:32:29.450862",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "type_of_food_waste_at_each_plant"
+ ],
+ "fields": [
+  {
+   "fieldname": "type_of_food_waste_at_each_plant",
+   "fieldtype": "Data",
+   "label": "Type of Food Waste at Each Plant"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-06-03 12:33:24.560099",
+ "modified_by": "Administrator",
+ "module": "Masar Waste Food",
+ "name": "Type of Food Waste Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

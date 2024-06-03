@@ -40,15 +40,16 @@ def columns():
 
 def chart():
 	data = frappe.db.sql("""
-					  SELECT country, city, estimated_quantity_per_week
+					  SELECT city, estimated_quantity_per_week
 					  FROM `tabSupplier Qualification`
+					  GROUP BY city
 					  """, as_dict = True)
 	
 	address = []
 	quantity = []
 
 	for row in data:
-		address.append(str(row.country) + '-' + str(row.city))
+		address.append(str(row.city))
 		quantity.append(row.estimated_quantity_per_week)
 
 	chart = {

@@ -10,57 +10,61 @@
   "supplier_info_tab",
   "supplier_info_section",
   "supplier_name",
+  "column_break_tpov",
   "contact_number",
   "contact_no_confirmed",
-  "address_map",
-  "column_break_tpov",
+  "column_break_swvo",
+  "city",
+  "street_address",
+  "address_confirmed",
+  "section_break_yekf",
   "contacted_person",
   "email_id",
-  "country",
-  "address_confirmed",
-  "column_break_swvo",
-  "supplier_group",
-  "supplier_type",
-  "city",
   "refrence",
-  "section_break_yekf",
-  "type_of_generated_waste",
   "column_break_shvp",
+  "supplier_type",
+  "supplier_group",
+  "type_of_generated_waste",
   "expected_quantity",
   "round_trip_tab",
   "section_break_lzuo",
+  "address_from_geo_location",
   "map",
   "insert_location",
   "column_break_rpvy",
   "distance",
   "round_trip_cost",
+  "conclusion_status",
   "round_trip_conclusion",
   "section_break_vjgx",
   "round_trip_route",
   "site_visit_tab",
   "section_break_duzx",
-  "list_of_plants",
-  "type_of_food_waste_at_each_plant",
+  "child_list_of_plants",
+  "child_type_of_food_waste",
   "suitable_container_size",
   "no_of_totes",
   "number_of_round_trips",
   "estimated_quantity_per_week",
   "cubic_meters_per_week",
-  "price_per_ton",
   "column_break_xskv",
-  "appropriate_collection_frequency",
   "best_totes_location_selected",
-  "proper_time_to_collect_totes",
-  "restricted_time_to_collect_totes",
-  "sample_collected",
+  "appropriate_collection_frequency",
+  "appropriate_time_to_collect_totes",
   "current_disposal_process",
+  "sample_collected",
   "site_visit_conclusion",
   "lab_test_1_tab",
   "section_break_akvw",
   "solid_percentage",
   "moisture_percentage",
   "column_break_agdh",
+  "lab_test_1_result",
   "moisture_test_conclusion",
+  "projected_price_analysis_section",
+  "price_per_ton",
+  "column_break_emku",
+  "waste_weight",
   "tab_break_vnnc",
   "section_break_bsvg",
   "fat_percentage",
@@ -69,6 +73,7 @@
   "data_fact_source",
   "data_fact_sheet",
   "column_break_coua",
+  "lab_test_2_result",
   "nutrients_content_conclusion",
   "section_break_dnak",
   "amended_from"
@@ -126,7 +131,7 @@
   {
    "fieldname": "expected_quantity",
    "fieldtype": "Float",
-   "label": "Expected Quantity Per Week",
+   "label": "Initial Expected Quantity Per Week (Tons)",
    "reqd": 1
   },
   {
@@ -190,16 +195,6 @@
    "label": "Site Visit"
   },
   {
-   "fieldname": "list_of_plants",
-   "fieldtype": "Small Text",
-   "label": "List of Plants"
-  },
-  {
-   "fieldname": "type_of_food_waste_at_each_plant",
-   "fieldtype": "Small Text",
-   "label": "Type of Food Waste at Each Plant"
-  },
-  {
    "fieldname": "suitable_container_size",
    "fieldtype": "Select",
    "label": "Suitable Container Size (m3)",
@@ -209,12 +204,14 @@
    "depends_on": "eval:doc.workflow_state == 'Route Feasible'",
    "fieldname": "estimated_quantity_per_week",
    "fieldtype": "Float",
-   "label": "Quantity Per Week After Visit"
+   "label": "Quantity Per Week After Visit",
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Route Feasible'"
   },
   {
    "fieldname": "current_disposal_process",
-   "fieldtype": "Small Text",
-   "label": "Current Disposal Process"
+   "fieldtype": "Link",
+   "label": "Current Disposal Process",
+   "options": "Disposal Process"
   },
   {
    "fieldname": "column_break_xskv",
@@ -225,16 +222,6 @@
    "fieldtype": "Select",
    "label": "Appropriate Collection Frequency",
    "options": "1 per Day\n1 per 2 Days\n1 per 3 Days\n1 per 7 Days"
-  },
-  {
-   "fieldname": "proper_time_to_collect_totes",
-   "fieldtype": "Small Text",
-   "label": "Proper Time to Collect Totes"
-  },
-  {
-   "fieldname": "restricted_time_to_collect_totes",
-   "fieldtype": "Small Text",
-   "label": "Restricted Time to Collect Totes"
   },
   {
    "fieldname": "section_break_akvw",
@@ -288,7 +275,8 @@
   {
    "fieldname": "round_trip_cost",
    "fieldtype": "Data",
-   "label": "Round Trip Cost"
+   "label": "Round Trip Cost",
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Address Confirmed'"
   },
   {
    "default": "0",
@@ -373,25 +361,14 @@
   {
    "fieldname": "insert_location",
    "fieldtype": "Button",
-   "label": "Insert Location to Child Table"
-  },
-  {
-   "fieldname": "country",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Country",
-   "options": "Country"
+   "label": "Get Route From Fleet Management"
   },
   {
    "fieldname": "city",
    "fieldtype": "Link",
    "label": "City",
-   "options": "City"
-  },
-  {
-   "fieldname": "address_map",
-   "fieldtype": "Data",
-   "label": "Address Map"
+   "options": "City",
+   "reqd": 1
   },
   {
    "fieldname": "refrence",
@@ -401,6 +378,7 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:(doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2')",
    "fieldname": "tab_break_vnnc",
    "fieldtype": "Tab Break",
    "label": "Lab Test 2"
@@ -427,12 +405,73 @@
    "fieldname": "lab_test_1_tab",
    "fieldtype": "Tab Break",
    "label": "Lab Test 1"
+  },
+  {
+   "fieldname": "street_address",
+   "fieldtype": "Data",
+   "label": "Street Address"
+  },
+  {
+   "fieldname": "address_from_geo_location",
+   "fieldtype": "Data",
+   "label": "Address From Geo Location"
+  },
+  {
+   "fieldname": "conclusion_status",
+   "fieldtype": "Select",
+   "label": "Conclusion Status",
+   "options": "\nNot Feasabile\nFeasabile As Noted\nFeasabile"
+  },
+  {
+   "fieldname": "child_list_of_plants",
+   "fieldtype": "Table",
+   "label": "List of Plants",
+   "options": "List of Plants Table"
+  },
+  {
+   "fieldname": "child_type_of_food_waste",
+   "fieldtype": "Table",
+   "label": "Type of Food Waste at Each Plant",
+   "options": "Type of Food Waste Table"
+  },
+  {
+   "fieldname": "projected_price_analysis_section",
+   "fieldtype": "Section Break",
+   "label": "Projected Price Analysis"
+  },
+  {
+   "fieldname": "column_break_emku",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "waste_weight",
+   "fieldtype": "Select",
+   "label": "Waste Weight Per Cubic Meter",
+   "options": "\n0.25\n0.30\n0.50\n0.75\n1.0"
+  },
+  {
+   "fieldname": "lab_test_1_result",
+   "fieldtype": "Select",
+   "label": "Lab Test 1 Result",
+   "options": "\nPassed\nFailed"
+  },
+  {
+   "fieldname": "lab_test_2_result",
+   "fieldtype": "Select",
+   "label": "Lab Test 2 Result",
+   "options": "\nPassed\nFailed"
+  },
+  {
+   "fieldname": "appropriate_time_to_collect_totes",
+   "fieldtype": "Table MultiSelect",
+   "label": "Appropriate Time to Collect Totes",
+   "options": "Appropriate Times Child"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-05-22 12:12:31.737910",
+ "modified": "2024-06-03 15:01:04.439645",
  "modified_by": "Administrator",
  "module": "Masar Waste Food",
  "name": "Supplier Qualification",
