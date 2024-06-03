@@ -11,9 +11,6 @@ def data(filters):
 	if filters.get('supplier_name'):
 		conditions += f" AND supplier_name = '{filters.get('supplier_name')}'"
 
-	if filters.get('country'):
-		conditions += f" AND country = '{filters.get('country')}'"	
-
 	if filters.get('city'):
 		conditions += f" AND city = '{filters.get('city')}'"
 
@@ -21,7 +18,7 @@ def data(filters):
 		conditions += f" AND estimated_quantity_per_week = '{filters.get('estimated_quantity_per_week')}'"		
 
 	return frappe.db.sql(f"""
-SELECT supplier_name, contact_number, contact_no_confirmed, email_id, country, city, estimated_quantity_per_week, workflow_state
+SELECT supplier_name, contact_number, contact_no_confirmed, email_id, city, estimated_quantity_per_week, workflow_state
 FROM `tabSupplier Qualification`
 WHERE 1=1 {conditions}					  
 """)
@@ -32,7 +29,6 @@ def columns():
 		"Contact Number:Data:200",
 		"Contact No. Confirmed:Check:200",
 		"Email ID:Data:200",
-		"Country:Link/Country:150",
 		"City:Link/City:150",
 		"Quantity Per Week:Data:200",
 		"Workflow State:Link/Workflow State:200",

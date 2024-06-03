@@ -11,13 +11,6 @@ frappe.query_reports["Waste Food Chart"] = {
 		},
 
 		{
-			"fieldname": "country",
-			"label": __("Country"),
-			"fieldtype": "Link",
-			"options": "Country",
-		},
-
-		{
 			"fieldname": "city",
 			"label": __("City"),
 			"fieldtype": "Link",

@@ -16,7 +16,7 @@ def data(filters):
         conditions += f" AND supplier_name = '{filters.get('supplier_name')}'"
 
     return frappe.db.sql(f"""
-        SELECT supplier_name, contact_number, contact_no_confirmed, email_id, country, city, workflow_state
+        SELECT supplier_name, contact_number, contact_no_confirmed, email_id, city, workflow_state
         FROM `tabSupplier Qualification`
         WHERE 1=1 {conditions}
     """)
@@ -27,7 +27,6 @@ def columns():
         "Contact Number:Data:200",
         "Contact No. Confirmed:Check:150",
         "Email ID:Data:200",
-        "Country:Data:100",
         "City:Data:150",
         "Workflow State:Link/Workflow State:200",
     ]
