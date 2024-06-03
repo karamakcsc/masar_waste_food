@@ -131,8 +131,7 @@
   {
    "fieldname": "expected_quantity",
    "fieldtype": "Float",
-   "label": "Initial Expected Quantity Per Week (Tons)",
-   "reqd": 1
+   "label": "Initial Expected Quantity Per Week (Tons)"
   },
   {
    "fieldname": "data_fact_sheet",
@@ -313,8 +312,7 @@
   {
    "fieldname": "email_id",
    "fieldtype": "Data",
-   "label": "Email ID",
-   "reqd": 1
+   "label": "Email ID"
   },
   {
    "fieldname": "supplier_info_section",
@@ -471,7 +469,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-03 15:01:04.439645",
+ "modified": "2024-06-03 16:21:43.268279",
  "modified_by": "Administrator",
  "module": "Masar Waste Food",
  "name": "Supplier Qualification",
