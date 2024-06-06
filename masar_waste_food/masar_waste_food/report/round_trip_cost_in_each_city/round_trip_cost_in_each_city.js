@@ -1,10 +1,9 @@
 // Copyright (c) 2024, KCSC and contributors
 // For license information, please see license.txt
 
-frappe.query_reports["Waste Food Summary"] = {
+frappe.query_reports["Round Trip Cost in Each City"] = {
 	"filters": [
 
-	
 		{
 			"fieldname": "supplier_name",
 			"label": __("Supplier Name"),
@@ -14,9 +13,16 @@ frappe.query_reports["Waste Food Summary"] = {
 		{
 			"fieldname": "city",
 			"label": __("City"),
+			"fieldtype": "Link",
+			"options": "City",
+		},
+
+		{
+			"fieldname": "round_trip_cost",
+			"label": __("Round Trip Cost"),
 			"fieldtype": "Data",
 		},
-		
+
 		{
 			"fieldname": "workflow_state",
 			"label": __("Workflow State"),

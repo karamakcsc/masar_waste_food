@@ -42,6 +42,7 @@ def chart():
 	data = frappe.db.sql("""
 					  SELECT supplier_name, estimated_quantity_per_week, moisture_percentage, price_per_ton
 FROM `tabSupplier Qualification`
+					  WHERE docstatus = 1
 ORDER BY supplier_name DESC
 LIMIT 5;
 					  """, as_dict = True)
@@ -77,4 +78,4 @@ LIMIT 5;
         'type': 'bar'
     }
 
-	return chart	
+	return chart

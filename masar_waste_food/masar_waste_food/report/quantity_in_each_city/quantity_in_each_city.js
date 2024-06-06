@@ -1,7 +1,7 @@
 // Copyright (c) 2024, KCSC and contributors
 // For license information, please see license.txt
 
-frappe.query_reports["Waste Food Chart"] = {
+frappe.query_reports["Quantity in Each City"] = {
 	"filters": [
 
 		{

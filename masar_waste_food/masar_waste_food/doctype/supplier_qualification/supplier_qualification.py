@@ -2,22 +2,40 @@ import frappe
 from frappe.model.document import Document
 
 class SupplierQualification(Document):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.is_updating = False
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.is_updating = False
 
     def validate(self):
-        pass
-        # if (self.email_id is None):
-        #     frappe.throw('Please Enter Email')
 
-    def on_update(self):
-        if not self.is_updating:
-            self.is_updating = True
+        if self.workflow_state == 'Route Feasible':
+             if not self.contact_no_confirmed and not self.address_confirmed:
+                  frappe.throw('Contact No. Confirmed and Address Confirmed Must be Checked to Go to the Next State')
+        if self.workflow_state == 'Site Surveyed':
+            if not self.sample_collected:
+                frappe.throw('Sample Collected Must Be Checked To Go The Next State')
+            if not self.suitable_container_size:
+                 frappe.throw('Suitable Container Size Must Be Selected To Go The Next State')
             self.cubic_meter_sum()
             self.num_of_tote_sum()
+        if self.workflow_state == 'Pass Test 1':
+            if not self.lab_test_1_result == 'Passed':
+                frappe.throw('Lab Test Result Must Be "Passed" To Go To The Next State')
+            if not self.waste_weight:
+                 frappe.throw('Waste Weight Per Cubic Meter Must Be Selected To Go The Next State')    
             self.price_per_ton_sum()
-            self.is_updating = False
+            if float(self.solid_percentages) + float(self.moisture_percentages) > 100:
+                 frappe.throw('The Percentages of the Lab Tests Must Not be Bigger than 100')
+        if self.workflow_state == 'Pass Test 2':
+            if not self.lab_test_2_result == 'Passed':
+                frappe.throw('Lab Test Result Must Be "Passed" To Go The Next State')
+            if float(self.fat_percentage) + float(self.protein_percentage) + float(self.fiber_percentage) > 100:
+                 frappe.throw('The Percentages of the Lab Tests Must Not be Bigger than 100')
+    # def on_update(self):
+    #     if not self.is_updating:
+    #         self.is_updating = True
+            
+    #         self.is_updating = False
 
     def on_submit(self):
         self.create_supplier()
@@ -32,27 +50,29 @@ class SupplierQualification(Document):
         doc.insert(ignore_permissions=True)
 
     def cubic_meter_sum(self):
-        if self.workflow_state == 'Site Surveyed':
             total = float(self.estimated_quantity_per_week)
-            tons_per = float(self.suitable_container_size)
-            if tons_per > 0:
-                self.cubic_meters_per_week = total / tons_per
-                self.save(ignore_permissions=True)
+            tote_size = float(self.suitable_container_size)
+            if tote_size > 0:
+                self.cubic_meters_per_week = total / tote_size
+                # self.save(ignore_permissions=True)
+            else:
+                 frappe.throw('Suitable Container Size Must Be A Number And Bigger Than 0')     
 
     def num_of_tote_sum(self):
-        if self.workflow_state == 'Site Surveyed':
             tote_size = float(self.suitable_container_size)
             cubic_meters = float(self.cubic_meters_per_week)
             if tote_size > 0:
                 self.no_of_totes = cubic_meters / tote_size
                 self.number_of_round_trips = self.no_of_totes
-                self.save(ignore_permissions=True)
+                # self.save(ignore_permissions=True)
+            else:
+                 frappe.throw('Suitable Container Size Must Be A Number And Bigger Than 0')    
 
     def price_per_ton_sum(self):
-        if self.workflow_state == 'Site Surveyed':
-            num_of_rt = float(self.number_of_round_trips)
+            # num_of_rt = float(self.number_of_round_trips)
             price_of_rt = float(self.round_trip_cost)
-            total = float(self.estimated_quantity_per_week)
-            if total > 0:
-                self.price_per_ton = (num_of_rt * price_of_rt) / total
-                self.save(ignore_permissions=True)
+            tote_weight = float(self.estimated_quantity_per_week) * float(self.waste_weight)
+            if tote_weight > 0:
+                self.price_per_ton = price_of_rt / tote_weight
+            else:
+                 frappe.throw('Quantity Per Week After Visit Must Be A Number And Bigger Than 0')     

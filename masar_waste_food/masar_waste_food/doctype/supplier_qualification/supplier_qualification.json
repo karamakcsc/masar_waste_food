@@ -43,10 +43,10 @@
   "child_list_of_plants",
   "child_type_of_food_waste",
   "suitable_container_size",
-  "no_of_totes",
-  "number_of_round_trips",
   "estimated_quantity_per_week",
   "cubic_meters_per_week",
+  "no_of_totes",
+  "number_of_round_trips",
   "column_break_xskv",
   "best_totes_location_selected",
   "appropriate_collection_frequency",
@@ -56,8 +56,8 @@
   "site_visit_conclusion",
   "lab_test_1_tab",
   "section_break_akvw",
-  "solid_percentage",
-  "moisture_percentage",
+  "solid_percentages",
+  "moisture_percentages",
   "column_break_agdh",
   "lab_test_1_result",
   "moisture_test_conclusion",
@@ -70,7 +70,7 @@
   "fat_percentage",
   "protein_percentage",
   "fiber_percentage",
-  "data_fact_source",
+  "child_data_fact_source",
   "data_fact_sheet",
   "column_break_coua",
   "lab_test_2_result",
@@ -107,8 +107,9 @@
    "label": "Lab Test 2"
   },
   {
+   "default": "+962-",
    "fieldname": "contact_number",
-   "fieldtype": "Data",
+   "fieldtype": "Phone",
    "in_list_view": 1,
    "label": "Contact Number",
    "reqd": 1
@@ -116,13 +117,7 @@
   {
    "fieldname": "distance",
    "fieldtype": "Data",
-   "label": "Distance",
-   "mandatory_depends_on": "eval:doc.workflow_state == 'Address Confirmed'"
-  },
-  {
-   "fieldname": "data_fact_source",
-   "fieldtype": "Data",
-   "label": "Data Fact source"
+   "label": "Distance"
   },
   {
    "fieldname": "column_break_coua",
@@ -153,21 +148,26 @@
    "search_index": 1
   },
   {
+   "depends_on": "eval:(doc.contact_no_confirmed === 1 && doc.address_confirmed === 1)",
    "fieldname": "section_break_yekf",
    "fieldtype": "Section Break",
    "label": "Info"
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.workflow_state != 'Draft'",
    "fieldname": "address_confirmed",
    "fieldtype": "Check",
-   "label": "Address Confirmed"
+   "label": "Address Confirmed",
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Address Confirmed'"
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.workflow_state != 'Draft'",
    "fieldname": "contact_no_confirmed",
    "fieldtype": "Check",
-   "label": "Contact No. Confirmed"
+   "label": "Contact No. Confirmed",
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Address Confirmed'"
   },
   {
    "fieldname": "column_break_shvp",
@@ -197,13 +197,13 @@
    "fieldname": "suitable_container_size",
    "fieldtype": "Select",
    "label": "Suitable Container Size (m3)",
-   "options": "0.25\n0.30\n0.50\n0.75\n1.00"
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Route Feasible'",
+   "options": "\n0.25\n0.30\n0.50\n0.75\n1.00"
   },
   {
-   "depends_on": "eval:doc.workflow_state == 'Route Feasible'",
    "fieldname": "estimated_quantity_per_week",
    "fieldtype": "Float",
-   "label": "Quantity Per Week After Visit",
+   "label": "Quantity Per Week After Visit (Tons)",
    "mandatory_depends_on": "eval:doc.workflow_state == 'Route Feasible'"
   },
   {
@@ -228,18 +228,8 @@
    "label": "Lab Test 1"
   },
   {
-   "fieldname": "solid_percentage",
-   "fieldtype": "Data",
-   "label": "Solid Percentage"
-  },
-  {
    "fieldname": "column_break_agdh",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "moisture_percentage",
-   "fieldtype": "Data",
-   "label": "Moisture Percentage"
   },
   {
    "fieldname": "fat_percentage",
@@ -302,7 +292,8 @@
   {
    "fieldname": "site_visit_conclusion",
    "fieldtype": "Small Text",
-   "label": "Site Visit Conclusion"
+   "label": "Site Visit Conclusion",
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Route Feasible'"
   },
   {
    "fieldname": "nutrients_content_conclusion",
@@ -321,6 +312,7 @@
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.sample_collected == 1",
    "fieldname": "number_of_round_trips",
    "fieldtype": "Float",
    "label": "Number of Round Trips",
@@ -330,7 +322,7 @@
    "default": "0",
    "fieldname": "price_per_ton",
    "fieldtype": "Float",
-   "label": "Price Per Ton",
+   "label": "Price Per Ton (JD / Ton)",
    "read_only": 1
   },
   {
@@ -344,6 +336,7 @@
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.sample_collected == 1",
    "fieldname": "no_of_totes",
    "fieldtype": "Data",
    "label": "No. of Totes",
@@ -351,9 +344,10 @@
   },
   {
    "default": "0",
+   "depends_on": "eval:doc.sample_collected == 1",
    "fieldname": "cubic_meters_per_week",
    "fieldtype": "Data",
-   "label": "Cubic Meters Per Week",
+   "label": "Cubic Meters Per Week (m3)",
    "read_only": 1
   },
   {
@@ -376,7 +370,7 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval:(doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2')",
+   "depends_on": "eval:(doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2' || doc.docstatus == 1 || doc.docstatus == 2)",
    "fieldname": "tab_break_vnnc",
    "fieldtype": "Tab Break",
    "label": "Lab Test 2"
@@ -387,19 +381,19 @@
    "label": "Supplier Info"
   },
   {
-   "depends_on": "eval:(doc.workflow_state == 'Address Confirmed' || doc.workflow_state == 'Route Feasible' || doc.workflow_state == 'Site Surveyed' || doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2')",
+   "depends_on": "eval:(doc.workflow_state != 'Draft')",
    "fieldname": "round_trip_tab",
    "fieldtype": "Tab Break",
    "label": "Round Trip"
   },
   {
-   "depends_on": "eval:(doc.workflow_state == 'Route Feasible' || doc.workflow_state == 'Site Surveyed' || doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2')",
+   "depends_on": "eval:(doc.workflow_state == 'Route Feasible' || doc.workflow_state == 'Site Surveyed' || doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2' || doc.docstatus == 1 || doc.docstatus == 2)",
    "fieldname": "site_visit_tab",
    "fieldtype": "Tab Break",
    "label": "Site Visit"
   },
   {
-   "depends_on": "eval:(doc.workflow_state == 'Site Surveyed' || doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2')",
+   "depends_on": "eval:(doc.workflow_state == 'Site Surveyed' || doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2' || doc.docstatus == 1 || doc.docstatus == 2)",
    "fieldname": "lab_test_1_tab",
    "fieldtype": "Tab Break",
    "label": "Lab Test 1"
@@ -418,7 +412,7 @@
    "fieldname": "conclusion_status",
    "fieldtype": "Select",
    "label": "Conclusion Status",
-   "options": "\nNot Feasabile\nFeasabile As Noted\nFeasabile"
+   "options": "\nNot Feasible\nFeasible As Noted\nFeasible"
   },
   {
    "fieldname": "child_list_of_plants",
@@ -444,7 +438,8 @@
   {
    "fieldname": "waste_weight",
    "fieldtype": "Select",
-   "label": "Waste Weight Per Cubic Meter",
+   "label": "Waste Weight Per Cubic Meter (Ton / M3)",
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Site Surveyed'",
    "options": "\n0.25\n0.30\n0.50\n0.75\n1.0"
   },
   {
@@ -464,12 +459,28 @@
    "fieldtype": "Table MultiSelect",
    "label": "Appropriate Time to Collect Totes",
    "options": "Appropriate Times Child"
+  },
+  {
+   "fieldname": "child_data_fact_source",
+   "fieldtype": "Table",
+   "label": "Data Fact Source",
+   "options": "Data Fact Table"
+  },
+  {
+   "fieldname": "solid_percentages",
+   "fieldtype": "Data",
+   "label": "Solid Percentage"
+  },
+  {
+   "fieldname": "moisture_percentages",
+   "fieldtype": "Data",
+   "label": "Moisture Percentage"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-03 16:21:43.268279",
+ "modified": "2024-06-06 15:43:41.186248",
  "modified_by": "Administrator",
  "module": "Masar Waste Food",
  "name": "Supplier Qualification",

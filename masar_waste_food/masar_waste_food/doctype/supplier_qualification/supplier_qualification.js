@@ -27,3 +27,44 @@ frappe.ui.form.on("Supplier Qualification", {
     
     //   }
 });
+
+frappe.ui.form.on('Supplier Qualification', {
+    setup: function (frm) {
+        frm.fields_dict['child_list_of_plants'].grid.get_field('plant_code').get_query = function(doc, cdt, cdn) {
+            return {
+                filters: {
+                    "enable": 1,
+                }
+            };
+        };
+
+        frm.fields_dict['child_type_of_food_waste'].grid.get_field('waste_code').get_query = function(doc, cdt, cdn) {
+            return {
+                filters: {
+                    "enabled": 1,
+                }
+            };
+        };
+
+        frm.fields_dict['child_data_fact_source'].grid.get_field('source_code').get_query = function(doc, cdt, cdn) {
+            return {
+                filters: {
+                    "enabled": 1,
+                }
+            };
+        };
+ 
+    },
+
+    // onload: function (frm) {
+        
+    //     // frm.set_df_property("contact_no_confirmed", "reqd", true);
+    //     // frm.set_df_property("address_confirmed", "reqd", true);
+
+    //     // if (doc.contact_no_confirmed == 1 && doc.address_confirmed == 1){
+            
+    //     //     frm.toggle_display("section_break_yekf", false);
+
+    //     // }
+    // }
+});

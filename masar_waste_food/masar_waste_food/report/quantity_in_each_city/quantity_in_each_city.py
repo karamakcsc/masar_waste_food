@@ -11,14 +11,14 @@ def data(filters):
 	if filters.get('supplier_name'):
 		conditions += f" AND supplier_name = '{filters.get('supplier_name')}'"
 
-	if filters.get('round_trip_cost'):
-		conditions += f" AND round_trip_cost = '{filters.get('round_trip_cost')}'"
-
 	if filters.get('city'):
-		conditions += f" AND city = '{filters.get('city')}'"		
+		conditions += f" AND city = '{filters.get('city')}'"
+
+	if filters.get('estimated_quantity_per_week'):
+		conditions += f" AND estimated_quantity_per_week = '{filters.get('estimated_quantity_per_week')}'"		
 
 	return frappe.db.sql(f"""
-SELECT supplier_name, contact_number, contact_no_confirmed, email_id, city, round_trip_cost, workflow_state
+SELECT supplier_name, contact_number, contact_no_confirmed, email_id, city, estimated_quantity_per_week, workflow_state
 FROM `tabSupplier Qualification`
 WHERE 1=1 {conditions}					  
 """)
@@ -29,35 +29,35 @@ def columns():
 		"Contact Number:Data:200",
 		"Contact No. Confirmed:Check:200",
 		"Email ID:Data:200",
-		"City:Link/City:200",
-		"Round Trip Cost:Data:200",
+		"City:Link/City:150",
+		"Quantity Per Week:Data:200",
 		"Workflow State:Link/Workflow State:200",
     ]
 
 def chart():
 	data = frappe.db.sql("""
-					  SELECT city, round_trip_cost
+					  SELECT city, estimated_quantity_per_week
 					  FROM `tabSupplier Qualification`
 					  GROUP BY city
 					  """, as_dict = True)
 	
 	address = []
-	cost = []
+	quantity = []
 
 	for row in data:
 		address.append(str(row.city))
-		cost.append(row.round_trip_cost)
+		quantity.append(row.estimated_quantity_per_week)
 
 	chart = {
         'data': {
             'labels': address,
 			
             'datasets': [{
-                'name': 'Round Trip Cost',
-                'values': cost,
+                'name': 'Quantity Per Week',
+                'values': quantity,
             }]
         },
         'type': 'bar'
     }
 
-	return chart	
+	return chart

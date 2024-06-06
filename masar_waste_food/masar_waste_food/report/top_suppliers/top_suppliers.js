@@ -1,7 +1,7 @@
 // Copyright (c) 2024, KCSC and contributors
 // For license information, please see license.txt
 
-frappe.query_reports["Waste Food Chart3"] = {
+frappe.query_reports["Top Suppliers"] = {
 	"filters": [
 
 		{
@@ -11,16 +11,23 @@ frappe.query_reports["Waste Food Chart3"] = {
 		},
 
 		{
-			"fieldname": "city",
-			"label": __("City"),
-			"fieldtype": "Link",
-			"options": "City",
+			"fieldname": "estimated_quantity_per_week",
+			"label": __("Quantity Per Week"),
+			"fieldtype": "Float",
+			"default": "Null",
 		},
 
 		{
-			"fieldname": "round_trip_cost",
-			"label": __("Round Trip Cost"),
+			"fieldname": "moisture_percentage",
+			"label": __("Moisture Percentage"),
 			"fieldtype": "Data",
+		},
+
+		{
+			"fieldname": "price_per_ton",
+			"label": __("Price Per Ton"),
+			"fieldtype": "Float",
+			"default": "Null",
 		},
 
 		{

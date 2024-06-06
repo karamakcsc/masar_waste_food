@@ -1,9 +1,10 @@
 // Copyright (c) 2024, KCSC and contributors
 // For license information, please see license.txt
 
-frappe.query_reports["Waste Food Chart2"] = {
+frappe.query_reports["No. of Suppliers in Each State"] = {
 	"filters": [
 
+	
 		{
 			"fieldname": "supplier_name",
 			"label": __("Supplier Name"),
@@ -11,25 +12,11 @@ frappe.query_reports["Waste Food Chart2"] = {
 		},
 
 		{
-			"fieldname": "estimated_quantity_per_week",
-			"label": __("Quantity Per Week"),
-			"fieldtype": "Float",
-			"default": "Null",
-		},
-
-		{
-			"fieldname": "moisture_percentage",
-			"label": __("Moisture Percentage"),
+			"fieldname": "city",
+			"label": __("City"),
 			"fieldtype": "Data",
 		},
-
-		{
-			"fieldname": "price_per_ton",
-			"label": __("Price Per Ton"),
-			"fieldtype": "Float",
-			"default": "Null",
-		},
-
+		
 		{
 			"fieldname": "workflow_state",
 			"label": __("Workflow State"),

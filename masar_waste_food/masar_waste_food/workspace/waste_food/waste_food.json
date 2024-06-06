@@ -13,11 +13,11 @@
    "label": "Round Trip Cost in Each City"
   },
   {
-   "chart_name": "Top Supplier",
-   "label": "Top Supplier"
+   "chart_name": "Top 5 Suppliers",
+   "label": "Top Suppliers"
   }
  ],
- "content": "[{\"id\":\"FvCRHy-Vpy\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Waste Food</span>\",\"col\":12}},{\"id\":\"dzw8zPNBe2\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"No. of Waste Generators\",\"col\":8}},{\"id\":\"hv5JmPNzEM\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Waste Qty\",\"col\":4}},{\"id\":\"x0069kn8_i\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Approved\",\"col\":4}},{\"id\":\"UNhdp-wj-j\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Not Classified\",\"col\":4}},{\"id\":\"etEx8qRbco\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Avg. Cost PT\",\"col\":4}},{\"id\":\"0FxI5HkTZ7\",\"type\":\"chart\",\"data\":{\"chart_name\":\"No. of Suppliers in Each State\",\"col\":12}},{\"id\":\"7lCoHkXw26\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Quantity in Each City\",\"col\":12}},{\"id\":\"buRFseHqPO\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Round Trip Cost in Each City\",\"col\":12}},{\"id\":\"PCwiGknsgY\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Top Supplier\",\"col\":12}},{\"id\":\"AjfpCI9tQO\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"be9jbr6Vw6\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"qt-gPRjMBf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Supplier Qualification\",\"col\":3}},{\"id\":\"1D4Gk3lyN4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"City\",\"col\":3}},{\"id\":\"pPEgfIOODZ\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"tJ9id3cNON\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Master Data &amp; Reports</b></span>\",\"col\":12}},{\"id\":\"UF1IlXNgtQ\",\"type\":\"card\",\"data\":{\"card_name\":\"Master Data\",\"col\":4}},{\"id\":\"tcqJJQs0oa\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
+ "content": "[{\"id\":\"FvCRHy-Vpy\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Waste Food</span>\",\"col\":12}},{\"id\":\"dzw8zPNBe2\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"No. of Waste Generators\",\"col\":8}},{\"id\":\"hv5JmPNzEM\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Waste Qty\",\"col\":4}},{\"id\":\"x0069kn8_i\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Approved\",\"col\":4}},{\"id\":\"UNhdp-wj-j\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Not Classified\",\"col\":4}},{\"id\":\"etEx8qRbco\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Avg. Cost PT\",\"col\":4}},{\"id\":\"vkA0rMih1U\",\"type\":\"chart\",\"data\":{\"chart_name\":\"No. of Suppliers in Each State\",\"col\":12}},{\"id\":\"h6zdK7h7A2\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Quantity in Each City\",\"col\":12}},{\"id\":\"RGsxlH32zm\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Round Trip Cost in Each City\",\"col\":12}},{\"id\":\"sl4CrAdnYY\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Top Suppliers\",\"col\":12}},{\"id\":\"PCwiGknsgY\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Top Supplier\",\"col\":12}},{\"id\":\"AjfpCI9tQO\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"be9jbr6Vw6\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"qt-gPRjMBf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Supplier Qualification\",\"col\":3}},{\"id\":\"1D4Gk3lyN4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"City\",\"col\":3}},{\"id\":\"pPEgfIOODZ\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"tJ9id3cNON\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Master Data &amp; Reports</b></span>\",\"col\":12}},{\"id\":\"UF1IlXNgtQ\",\"type\":\"card\",\"data\":{\"card_name\":\"Master Data\",\"col\":4}},{\"id\":\"tcqJJQs0oa\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
  "creation": "2024-05-20 15:33:58.334356",
  "custom_blocks": [],
  "docstatus": 0,
@@ -71,45 +71,45 @@
   {
    "hidden": 0,
    "is_query_report": 1,
-   "label": "Waste Food Summary",
+   "label": "No. of Suppliers in Each State",
    "link_count": 0,
-   "link_to": "Waste Food Summary",
+   "link_to": "Num of Suppliers in Each State",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Waste Food Charts",
+   "is_query_report": 1,
+   "label": "Quantity in Each City",
    "link_count": 0,
-   "link_to": "Waste Food Chart",
+   "link_to": "Quantity in Each City",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Waste Food Charts",
+   "is_query_report": 1,
+   "label": "Round Trip Cost in Each City",
    "link_count": 0,
-   "link_to": "Waste Food Chart3",
+   "link_to": "Round Trip Cost in Each City",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Waste Food Charts",
+   "is_query_report": 1,
+   "label": "Top Suppliers",
    "link_count": 0,
-   "link_to": "Waste Food Chart2",
+   "link_to": "Top Suppliers",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2024-06-03 15:10:48.825771",
+ "modified": "2024-06-06 15:24:53.140362",
  "modified_by": "Administrator",
  "module": "Masar Waste Food",
  "name": "Waste Food",

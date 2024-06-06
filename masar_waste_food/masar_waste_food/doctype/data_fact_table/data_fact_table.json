@@ -1,34 +1,35 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-06-03 12:32:29.450862",
+ "creation": "2024-06-05 14:15:57.206625",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "waste_code",
-  "column_break_mgjo",
-  "waste_name",
+  "source_code",
+  "column_break_msev",
+  "source_name",
   "description_section",
   "description"
  ],
  "fields": [
   {
-   "fieldname": "waste_code",
+   "fieldname": "source_code",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Waste Code",
-   "options": "Waste"
+   "label": "Source Code",
+   "options": "Data Fact"
   },
   {
-   "fetch_from": "waste_code.waste_name",
-   "fieldname": "waste_name",
-   "fieldtype": "Read Only",
-   "label": "Waste Name"
-  },
-  {
-   "fieldname": "column_break_mgjo",
+   "fieldname": "column_break_msev",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "source_code.source_name",
+   "fieldname": "source_name",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "label": "Source Name"
   },
   {
    "fieldname": "description_section",
@@ -36,7 +37,7 @@
    "label": "Description"
   },
   {
-   "fetch_from": "waste_code.description",
+   "fetch_from": "source_code.description",
    "fieldname": "description",
    "fieldtype": "Text Editor",
    "label": "Description",
@@ -46,10 +47,10 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-06-05 14:01:53.411317",
+ "modified": "2024-06-05 14:19:07.040549",
  "modified_by": "Administrator",
  "module": "Masar Waste Food",
- "name": "Type of Food Waste Table",
+ "name": "Data Fact Table",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",
