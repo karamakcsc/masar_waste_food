@@ -9,8 +9,11 @@ class SupplierQualification(Document):
     def validate(self):
 
         if self.workflow_state == 'Route Feasible':
-             if not self.contact_no_confirmed and not self.address_confirmed:
+             if self.contact_no_confirmed and self.address_confirmed:
+                  pass
+             else:
                   frappe.throw('Contact No. Confirmed and Address Confirmed Must be Checked to Go to the Next State')
+
         if self.workflow_state == 'Site Surveyed':
             if not self.sample_collected:
                 frappe.throw('Sample Collected Must Be Checked To Go The Next State')
@@ -75,4 +78,8 @@ class SupplierQualification(Document):
             if tote_weight > 0:
                 self.price_per_ton = price_of_rt / tote_weight
             else:
-                 frappe.throw('Quantity Per Week After Visit Must Be A Number And Bigger Than 0')     
+                 frappe.throw('Quantity Per Week After Visit Must Be A Number And Bigger Than 0')
+
+
+
+######~.~. Mohamad Khalil Code ~.~.#####
