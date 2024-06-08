@@ -18,7 +18,7 @@ frappe.query_reports["Top Suppliers"] = {
 		},
 
 		{
-			"fieldname": "moisture_percentage",
+			"fieldname": "moisture_percentages",
 			"label": __("Moisture Percentage"),
 			"fieldtype": "Data",
 		},

@@ -14,15 +14,15 @@ def data(filters):
 	if filters.get('estimated_quantity_per_week'):
 		conditions += f" AND estimated_quantity_per_week = '{filters.get('estimated_quantity_per_week')}'"
 
-	if filters.get('moisture_percentage'):
-		conditions += f" AND moisture_percentage = '{filters.get('moisture_percentage')}'"
+	if filters.get('moisture_percentages'):
+		conditions += f" AND moisture_percentages = '{filters.get('moisture_percentages')}'"
 
 	if filters.get('price_per_ton'):
 		conditions += f" AND price_per_ton = '{filters.get('price_per_ton')}'"			
 
 	return frappe.db.sql(f"""
 SELECT supplier_name, contact_number, contact_no_confirmed, email_id, estimated_quantity_per_week,
-		moisture_percentage, price_per_ton, workflow_state
+		moisture_percentages, price_per_ton, workflow_state
 FROM `tabSupplier Qualification`
 WHERE 1=1 {conditions}					  
 """)
@@ -40,7 +40,7 @@ def columns():
 
 def chart():
 	data = frappe.db.sql("""
-					  SELECT supplier_name, estimated_quantity_per_week, moisture_percentage, price_per_ton
+					  SELECT supplier_name, estimated_quantity_per_week, moisture_percentages, price_per_ton
 FROM `tabSupplier Qualification`
 					  WHERE docstatus = 1
 ORDER BY supplier_name DESC
@@ -55,7 +55,7 @@ LIMIT 5;
 	for row in data:
 		supplier.append(row.supplier_name)
 		quantity.append(row.estimated_quantity_per_week)
-		moisture.append(row.moisture_percentage)
+		moisture.append(row.moisture_percentages)
 		cost.append(row.price_per_ton)
 
 	chart = {
