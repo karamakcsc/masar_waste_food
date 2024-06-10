@@ -293,7 +293,7 @@
    "fieldname": "site_visit_conclusion",
    "fieldtype": "Small Text",
    "label": "Site Visit Conclusion",
-   "mandatory_depends_on": "eval:doc.workflow_state == 'Route Feasible'"
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Route Completed'"
   },
   {
    "fieldname": "nutrients_content_conclusion",
@@ -480,7 +480,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-10 10:07:08.933234",
+ "modified": "2024-06-10 10:52:36.154623",
  "modified_by": "Administrator",
  "module": "Masar Waste Food",
  "name": "Supplier Qualification",

@@ -21,7 +21,7 @@ frappe.query_reports["Num of Suppliers in Each State"] = {
 			"fieldname": "workflow_state",
 			"label": __("Workflow State"),
 			"fieldtype": "Select",
-			"options": " \nDraft\nAddress Confirmed\nRoute Feasible\nSite Surveyed\nPass Test 1\nPass Test 2\nApproved",
+			"options": " \nDraft\nPhone Call Completed\nRoute Completed\nSite Survey Completed\nLab Test 1 Completed\nLab Test 2 Completed\nApproved",
 		},
 		
 

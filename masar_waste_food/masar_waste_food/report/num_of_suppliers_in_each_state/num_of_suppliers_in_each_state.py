@@ -39,11 +39,11 @@ def chart():
         ORDER BY CASE
             WHEN workflow_state IS NULL THEN 8
             WHEN workflow_state = 'Draft' THEN 0
-            WHEN workflow_state = 'Address Confirmed' THEN 1
-            WHEN workflow_state = 'Route Feasible' THEN 2
-            WHEN workflow_state = 'RSite Surveyed' THEN 3
-            WHEN workflow_state = 'Pass Test 1' THEN 4
-            WHEN workflow_state = 'Pass Test 2' THEN 5
+            WHEN workflow_state = 'Phone Call Completed' THEN 1
+            WHEN workflow_state = 'Route Completed' THEN 2
+            WHEN workflow_state = 'Site Survey Completed' THEN 3
+            WHEN workflow_state = 'Lab Test 1 Completed' THEN 4
+            WHEN workflow_state = 'Lab Test 2 Completed' THEN 5
             WHEN workflow_state = 'Approved' THEN 6
             ELSE 7
         END;
