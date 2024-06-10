@@ -6,7 +6,7 @@ frappe.ui.form.on("Supplier Qualification", {
         frm.refresh_field('cubic_meters_per_week');
         frm.refresh_field('no_of_totes');
         frm.refresh_field('number_of_round_trips');
-        frm.refresh_field('price_per_ton');
+        // frm.refresh_field('price_per_ton');
     },
 
     // address_map: function(frm){
@@ -67,4 +67,14 @@ frappe.ui.form.on('Supplier Qualification', {
 
     //     // }
     // }
+});
+
+
+frappe.ui.form.on("Supplier Qualification", {
+	waste_weight: function(frm)  {
+        if (frm.doc.round_trip_cost && frm.doc.estimated_quantity_per_week && frm.doc.waste_weight && frm.doc.waste_weight!= 0 && frm.doc.estimated_quantity_per_week!= 0) {
+        frm.doc.price_per_ton = flt(frm.doc.round_trip_cost) / (flt(frm.doc.estimated_quantity_per_week) * flt(frm.doc.waste_weight));
+        frm.refresh_field('price_per_ton');
+            }
+    },
 });
