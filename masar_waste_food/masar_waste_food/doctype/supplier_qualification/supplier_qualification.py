@@ -47,6 +47,7 @@ class SupplierQualification(Document):
         doc = frappe.new_doc('Supplier')
         doc.supplier_name = self.supplier_name
         doc.supplier_type = self.supplier_type
+        doc.supplier_group = self.supplier_group
         doc.email_id = self.email_id
         doc.mobile_no = self.contact_number
         # doc.supplier_primary_address = self.address
