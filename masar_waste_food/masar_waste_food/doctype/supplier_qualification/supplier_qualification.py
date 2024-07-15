@@ -8,7 +8,7 @@ class SupplierQualification(Document):
 
     def validate(self):
 
-        if self.workflow_state == 'Address Confirmedx':
+        if self.workflow_state == 'Address Confirmed':
              if self.contact_no_confirmed and self.address_confirmed:
                   pass
              else:
