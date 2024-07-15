@@ -8,20 +8,20 @@ class SupplierQualification(Document):
 
     def validate(self):
 
-        if self.workflow_state == 'Route Completed':
+        if self.workflow_state == 'Address Confirmed':
              if self.contact_no_confirmed and self.address_confirmed:
                   pass
              else:
                   frappe.throw('Contact No. Confirmed and Address Confirmed Must be Checked to Go to the Next State')
 
-        if self.workflow_state == 'Site Survey Completed':
+        if self.workflow_state == 'Site Surveyed':
             if not self.sample_collected:
                 frappe.throw('Sample Collected Must Be Checked To Go The Next State')
             if not self.suitable_container_size:
                  frappe.throw('Suitable Container Size Must Be Selected To Go The Next State')
             self.cubic_meter_sum()
             self.num_of_tote_sum()
-        if self.workflow_state == 'Lab Test 1 Completed':
+        if self.workflow_state == 'Pass Test 1':
             if not self.lab_test_1_result == 'Passed':
                 frappe.throw('Lab Test Result Must Be "Passed" To Go To The Next State')
             if not self.waste_weight:
@@ -29,7 +29,7 @@ class SupplierQualification(Document):
             # self.price_per_ton_sum()
             if float(self.solid_percentages) + float(self.moisture_percentages) > 100:
                  frappe.throw('The Percentages of the Lab Tests Must Not be Bigger than 100')
-        if self.workflow_state == 'Lab Test 2 Completed':
+        if self.workflow_state == 'Pass Test 2':
             if not self.lab_test_2_result == 'Passed':
                 frappe.throw('Lab Test Result Must Be "Passed" To Go The Next State')
             if float(self.fat_percentage) + float(self.protein_percentage) + float(self.fiber_percentage) > 100:

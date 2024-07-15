@@ -197,14 +197,14 @@
    "fieldname": "suitable_container_size",
    "fieldtype": "Select",
    "label": "Suitable Container Size (m3)",
-   "mandatory_depends_on": "eval:doc.workflow_state == 'Route Completed'",
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Route Feasible'",
    "options": "\n0.25\n0.30\n0.50\n0.75\n1.00"
   },
   {
    "fieldname": "estimated_quantity_per_week",
    "fieldtype": "Float",
    "label": "Quantity Per Week After Visit (Tons)",
-   "mandatory_depends_on": "eval:doc.workflow_state == 'Route Completed'"
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Route Feasible'"
   },
   {
    "fieldname": "current_disposal_process",
@@ -265,7 +265,7 @@
    "fieldname": "round_trip_cost",
    "fieldtype": "Data",
    "label": "Round Trip Cost",
-   "mandatory_depends_on": "eval:doc.workflow_state == 'Phone Call Completed'"
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Address Confirmed'"
   },
   {
    "default": "0",
@@ -370,7 +370,7 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval:(doc.workflow_state == 'Lab Test 1 Completed' ||doc.workflow_state == 'Lab Test 2 Completed' || doc.docstatus == 1 || doc.docstatus == 2)",
+   "depends_on": "eval:(doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2' || doc.docstatus == 1 || doc.docstatus == 2)",
    "fieldname": "tab_break_vnnc",
    "fieldtype": "Tab Break",
    "label": "Lab Test 2"
@@ -381,19 +381,19 @@
    "label": "Supplier Info"
   },
   {
-   "depends_on": "eval:(doc.workflow_state != 'Draft')",
+   "depends_on": "eval:(doc.workflow_state != 'Draft' && doc.workflow_state != 'Address Confirmation')",
    "fieldname": "round_trip_tab",
    "fieldtype": "Tab Break",
    "label": "Round Trip"
   },
   {
-   "depends_on": "eval:(doc.workflow_state == 'Route Completed' || doc.workflow_state == 'Site Survey Completed' || doc.workflow_state == 'Lab Test 1 Completed' ||doc.workflow_state == 'Lab Test 2 Completed' || doc.docstatus == 1 || doc.docstatus == 2)",
+   "depends_on": "eval:(doc.workflow_state == 'Route Feasible' || doc.workflow_state == 'Site Surveyed' || doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2' || doc.docstatus == 1 || doc.docstatus == 2)",
    "fieldname": "site_visit_tab",
    "fieldtype": "Tab Break",
    "label": "Site Visit"
   },
   {
-   "depends_on": "eval:(doc.workflow_state == 'Site Survey Completed' || doc.workflow_state == 'Lab Test 1 Completed' ||doc.workflow_state == 'Lab Test 2 Completed' || doc.docstatus == 1 || doc.docstatus == 2)",
+   "depends_on": "eval:(doc.workflow_state == 'Site Surveyed' || doc.workflow_state == 'Pass Test 1' ||doc.workflow_state == 'Pass Test 2' || doc.docstatus == 1 || doc.docstatus == 2)",
    "fieldname": "lab_test_1_tab",
    "fieldtype": "Tab Break",
    "label": "Lab Test 1"
@@ -439,7 +439,7 @@
    "fieldname": "waste_weight",
    "fieldtype": "Select",
    "label": "Waste Weight Per Cubic Meter (Ton / M3)",
-   "mandatory_depends_on": "eval:doc.workflow_state == 'Site Survey Completed'",
+   "mandatory_depends_on": "eval:doc.workflow_state == 'Site Surveyed'",
    "options": "\n0.25\n0.30\n0.50\n0.75\n1.0"
   },
   {
@@ -480,7 +480,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-06-10 10:52:36.154623",
+ "modified": "2024-07-15 11:52:05.636660",
  "modified_by": "Administrator",
  "module": "Masar Waste Food",
  "name": "Supplier Qualification",
