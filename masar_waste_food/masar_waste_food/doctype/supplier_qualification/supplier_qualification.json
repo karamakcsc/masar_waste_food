@@ -58,13 +58,13 @@
   "section_break_akvw",
   "solid_percentages",
   "moisture_percentages",
+  "waste_weight",
   "column_break_agdh",
   "lab_test_1_result",
   "moisture_test_conclusion",
   "projected_price_analysis_section",
   "price_per_ton",
   "column_break_emku",
-  "waste_weight",
   "tab_break_vnnc",
   "section_break_bsvg",
   "fat_percentage",
@@ -303,7 +303,8 @@
   {
    "fieldname": "email_id",
    "fieldtype": "Data",
-   "label": "Email ID"
+   "label": "Email ID",
+   "options": "Email"
   },
   {
    "fieldname": "supplier_info_section",
@@ -480,7 +481,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-07-15 11:52:05.636660",
+ "modified": "2024-07-15 12:15:26.772888",
  "modified_by": "Administrator",
  "module": "Masar Waste Food",
  "name": "Supplier Qualification",

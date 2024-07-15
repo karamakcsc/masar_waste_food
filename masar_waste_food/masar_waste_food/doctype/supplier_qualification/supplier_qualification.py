@@ -8,7 +8,7 @@ class SupplierQualification(Document):
 
     def validate(self):
 
-        if self.workflow_state == 'Address Confirmed':
+        if self.workflow_state == 'Address Confirmedx':
              if self.contact_no_confirmed and self.address_confirmed:
                   pass
              else:
@@ -19,8 +19,8 @@ class SupplierQualification(Document):
                 frappe.throw('Sample Collected Must Be Checked To Go The Next State')
             if not self.suitable_container_size:
                  frappe.throw('Suitable Container Size Must Be Selected To Go The Next State')
-            self.cubic_meter_sum()
-            self.num_of_tote_sum()
+            # self.cubic_meter_sum()
+            # self.num_of_tote_sum()
         if self.workflow_state == 'Pass Test 1':
             if not self.lab_test_1_result == 'Passed':
                 frappe.throw('Lab Test Result Must Be "Passed" To Go To The Next State')
@@ -53,24 +53,24 @@ class SupplierQualification(Document):
         # doc.supplier_primary_address = self.address
         doc.insert(ignore_permissions=True)
 
-    def cubic_meter_sum(self):
-            total = float(self.estimated_quantity_per_week)
-            tote_size = float(self.suitable_container_size)
-            if tote_size > 0:
-                self.cubic_meters_per_week = total / tote_size
-                # self.save(ignore_permissions=True)
-            else:
-                 frappe.throw('Suitable Container Size Must Be A Number And Bigger Than 0')     
+    # def cubic_meter_sum(self):
+    #         total = float(self.estimated_quantity_per_week)
+    #         tote_size = float(self.suitable_container_size)
+    #         if tote_size > 0:
+    #             self.cubic_meters_per_week = total / tote_size
+    #             # self.save(ignore_permissions=True)
+    #         else:
+    #              frappe.throw('Suitable Container Size Must Be A Number And Bigger Than 0')     
 
-    def num_of_tote_sum(self):
-            tote_size = float(self.suitable_container_size)
-            cubic_meters = float(self.cubic_meters_per_week)
-            if tote_size > 0:
-                self.no_of_totes = cubic_meters / tote_size
-                self.number_of_round_trips = self.no_of_totes
-                # self.save(ignore_permissions=True)
-            else:
-                 frappe.throw('Suitable Container Size Must Be A Number And Bigger Than 0')    
+    # def num_of_tote_sum(self):
+    #         tote_size = float(self.suitable_container_size)
+    #         cubic_meters = float(self.cubic_meters_per_week)
+    #         if tote_size > 0:
+    #             self.no_of_totes = cubic_meters / tote_size
+    #             self.number_of_round_trips = self.no_of_totes
+    #             # self.save(ignore_permissions=True)
+    #         else:
+    #              frappe.throw('Suitable Container Size Must Be A Number And Bigger Than 0')    
 
     # def price_per_ton_sum(self):
     #         # num_of_rt = float(self.number_of_round_trips)

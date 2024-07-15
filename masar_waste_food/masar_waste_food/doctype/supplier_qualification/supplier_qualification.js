@@ -77,4 +77,44 @@ frappe.ui.form.on("Supplier Qualification", {
         frm.refresh_field('price_per_ton');
             }
     },
+    solid_percentages: function(frm) {
+        if (frm.doc.solid_percentages || frm.doc.moisture_percentages) {
+            if (!frm.doc.moisture_percentages && frm.doc.solid_percentages > 0 && frm.doc.solid_percentages <= 100) {
+                frm.doc.moisture_percentages = 100 - frm.doc.solid_percentages;
+                frm.refresh_field("moisture_percentages");
+            }
+            if (!frm.doc.solid_percentages && frm.doc.moisture_percentages > 0 && frm.doc.moisture_percentages <= 100) {
+                frm.doc.solid_percentages = 100 - frm.doc.moisture_percentages;
+                frm.refresh_field("solid_percentages");
+            }
+        }
+    },
+    moisture_percentages: function(frm) {
+        if (frm.doc.solid_percentages || frm.doc.moisture_percentages) {
+            if (!frm.doc.moisture_percentages && frm.doc.solid_percentages > 0 && frm.doc.solid_percentages <= 100) {
+                frm.doc.moisture_percentages = 100 - frm.doc.solid_percentages;
+                frm.refresh_field("moisture_percentages");
+            }
+            if (!frm.doc.solid_percentages && frm.doc.moisture_percentages > 0 && frm.doc.moisture_percentages <= 100) {
+                frm.doc.solid_percentages = 100 - frm.doc.moisture_percentages;
+                frm.refresh_field("solid_percentages");
+            }
+        }
+    },
+    estimated_quantity_per_week: function(frm) {
+        if (frm.doc.round_trip_cost && frm.doc.estimated_quantity_per_week && frm.doc.suitable_container_size && frm.doc.suitable_container_size!= 0 && frm.doc.estimated_quantity_per_week!= 0) {
+            frm.doc.cubic_meters_per_week = flt(frm.doc.estimated_quantity_per_week) / flt(frm.doc.suitable_container_size);
+            frm.refresh_field('cubic_meters_per_week');
+
+            if (frm.doc.cubic_meters_per_week && frm.doc.cubic_meters_per_week != 0) {
+                frm.doc.no_of_totes = flt(frm.doc.cubic_meters_per_week) / flt(flt(frm.doc.suitable_container_size));
+                frm.refresh_field('no_of_totes');
+            }
+            
+            if (frm.doc.cubic_meters_per_week && frm.doc.cubic_meters_per_week != 0) {
+                frm.doc.number_of_round_trips = flt(frm.doc.cubic_meters_per_week) / flt(flt(frm.doc.suitable_container_size));
+                frm.refresh_field('number_of_round_trips');
+            }
+        }
+    },
 });
