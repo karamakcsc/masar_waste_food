@@ -56,7 +56,7 @@ frappe.ui.form.on('Supplier Qualification', {
  
     },
 
-    // onload: function (frm) {
+    //// onload: function (frm) {
         
     //     // frm.set_df_property("contact_no_confirmed", "reqd", true);
     //     // frm.set_df_property("address_confirmed", "reqd", true);
